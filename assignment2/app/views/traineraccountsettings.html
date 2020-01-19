@@ -1,0 +1,69 @@
+#{extends 'main.html' /}
+#{set title:'Account Settings' /}
+
+#{trainermenu id:"/traineraccountsettings"/}
+
+<section class="ui raised segment">
+  <table class="ui tablet stackable fixed table">
+  	<tbody>
+  		<tr>
+  			<td>Name:</td>
+  			<td>${trainer.name}</td>
+  			<form class="ui stacked segment form" action="/traineraccountsettings/editname" method="POST">
+	  			<div class="field">
+	  				<td><input placeholder="Name" type="text" name="name"></td>
+			  	</div>
+	  			<td> <button class="ui blue submit button"> Edit</button></td>
+  			</form>
+  		</tr>
+  		<tr>
+  			<td>Gender:</td>
+  			<td>${trainer.gender}</td>
+  			<form class="ui stacked segment form" action="/traineraccountsettings/editgender" method="POST">
+  				<div class="field">
+	  				<td>
+						<input placeholder="Gender" type="text" name="gender">
+		          	</td>
+		         </div>
+		  		<td><button class="ui blue submit button">Edit</button></td>
+  			</form>
+  		</tr>
+  		<tr>
+  			<td>Email:</td>
+  			<td>${trainer.email}</td>
+  			<form class="ui stacked segment form" action="/traineraccountsettings/editemail" method="POST">
+  				<div class="field">
+  					<td>
+		    			<input placeholder="Email" type="text" name="email">
+		    		</td>
+		  		</div>
+  				<td> <button class="ui blue submit button">Edit</button></td>
+  			</form>
+  		</tr>
+  		<tr>
+  			<td>Password:</td>
+  			<td>${trainer.password}</td>
+  			<form class="ui stacked segment form" action="/traineraccountsettings/editpassword" method="POST">
+  				<div class="field">
+  					<td>
+  						<input placeholder="Password" type="text" name="password">
+  					</td>
+		  		</div>
+  				<td> <button class="ui blue submit button">Edit</button></td>
+  			</form>
+  		</tr>
+  		<tr>
+  			<td>Address:</td>
+  			<td>${trainer.address}</td>
+  			<form class="ui stacked segment form" action="/traineraccountsettings/editaddress" method="POST">
+  				<div class="field">
+  					<td>
+		    			<input placeholder="Address" type="text" name="address">
+		    		</td>
+		  		</div>
+  			<td> <button class="ui blue submit button">Edit</button></td>
+			</form>
+		</tr>  			
+ 	</tbody>
+  </table>
+</section>

@@ -1,0 +1,17 @@
+#{extends 'main.html' /}
+#{set title:'Trainer Dashboard' /}
+
+#{trainermenu id:"trainerdashboard"/}
+<section class="ui raised segment">
+  #{list items:memberList, as:'member'}
+  <section>
+    <table>
+      <tr>
+        <td><i class="large github icon"></i></td>
+        <td><b style="text-transform: capitalize"><a href="/members/${member.id}">${member.name}</a></b><br/>${member.noOfAssessments} assessments</td>
+        <td><a href="/trainer/${member.id}/deletemember"><i class="large red trash alternate icon"></i></a> <td>
+  </tr>
+  </table>
+  </section>
+  #{/list}
+</section>

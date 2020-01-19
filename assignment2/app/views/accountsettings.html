@@ -1,0 +1,94 @@
+#{extends 'main.html' /}
+#{set title:'Account Settings' /}
+
+#{menu id:"accountsettings"/}
+
+<section class="ui raised segment">
+  <table class="ui tablet stackable fixed table">
+  	<tbody>
+  		<tr>
+  			<td>Name:</td>
+  			<td>${member.name}</td>
+  			<form class="ui stacked segment form" action="/accountsettings/editname" method="POST">
+	  			<div class="field">
+	  				<td><input placeholder="Name" type="text" name="name"></td>
+			  	</div>
+	  			<td> <button class="ui blue submit button"> Edit</button></td>
+  			</form>
+  		</tr>
+  		<tr>
+  			<td>Gender:</td>
+  			<td>${member.gender}</td>
+  			<form class="ui stacked segment form" action="/accountsettings/editgender" method="POST">
+  				<div class="field">
+	  				<td>
+						<input placeholder="Gender" type="text" name="gender">
+		          	</td>
+		         </div>
+		  		<td><button class="ui blue submit button">Edit</button></td>
+  			</form>
+  		</tr>
+  		<tr>
+  			<td>Email:</td>
+  			<td>${member.email}</td>
+  			<form class="ui stacked segment form" action="/accountsettings/editemail" method="POST">
+  				<div class="field">
+  					<td>
+		    			<input placeholder="Email" type="text" name="email">
+		    		</td>
+		  		</div>
+  				<td> <button class="ui blue submit button">Edit</button></td>
+  			</form>
+  		</tr>
+  		<tr>
+  			<td>Password:</td>
+  			<td>${member.password}</td>
+  			<form class="ui stacked segment form" action="/accountsettings/editpassword" method="POST">
+  				<div class="field">
+  					<td>
+  						<input placeholder="Password" type="text" name="password">
+  					</td>
+		  		</div>
+  				<td> <button class="ui blue submit button">Edit</button></td>
+  			</form>
+  		</tr>
+  		<tr>
+  			<td>Address:</td>
+  			<td>${member.address}</td>
+  			<form class="ui stacked segment form" action="/accountsettings/editaddress" method="POST">
+  				<div class="field">
+  					<td>
+		    			<input placeholder="Address" type="text" name="address">
+		    		</td>
+		  		</div>
+  			<td> <button class="ui blue submit button">Edit</button></td>
+			</form>
+		</tr>
+  		<tr>
+  			<td>Height:</td>
+  			<td>${member.height}m</td>
+  			<form class="ui stacked segment form" action="/accountsettings/editheight" method="POST">
+	  			<div class="field">
+	  				<td>
+			    		<input placeholder="00.00m" type="text" name="address">
+			    	</td>
+			  	</div>
+	  			<td> <button class="ui blue submit button">Edit</button></td>
+  			</form>
+  		</tr>
+  		<tr>
+  			<td>Starting Weight:</td>
+  			<td>${member.startingWeight}kg</td>
+  			<form class="ui stacked segment form" action="/accountsettings/editstartingweight" method="POST">
+	  			<div class="field">
+	  				<td>
+			    		<input placeholder="00.00kg" type="text" name="weight">
+			    	</td>
+			  	</div>
+	  			<td> <button class="ui blue submit button">Edit</button></td>
+  			</form>
+  		</tr>
+  			
+ 	</tbody>
+  </table>
+</section>

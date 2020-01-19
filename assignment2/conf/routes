@@ -1,0 +1,43 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                                       Start.index
+GET     /dashboard                              Dashboard.index
+GET     /trainerdashboard                       TrainerDashboard.index
+POST    /dashboard/addassessment                Dashboard.addAssessment
+GET     /about                                  About.index
+GET     /trainerabout                           TrainerAbout.index
+GET    /accountsettings                         Accounts.getMemberInfo
+POST    /accountsettings/editname         		Accounts.editName
+POST    /accountsettings/editgender         	Accounts.editGender
+POST    /accountsettings/editpassword         	Accounts.editPassword
+POST    /accountsettings/editemail         		Accounts.editEmail
+POST    /accountsettings/editheight         	Accounts.editHeight
+POST    /accountsettings/editaddress         	Accounts.editAddress
+POST    /accountsettings/editstartingweight     Accounts.editStartingWeight
+GET    /traineraccountsettings                  Accounts.getTrainerInfo
+POST    /traineraccountsettings/editname        Accounts.editTrainerName
+POST    /traineraccountsettings/editgender      Accounts.editTrainerGender
+POST    /traineraccountsettings/editpassword    Accounts.editTrainerPassword
+POST    /traineraccountsettings/editemail       Accounts.editTrainerEmail
+POST    /traineraccountsettings/editaddress     Accounts.editTrainerAddress
+GET    /signup                                  Accounts.signup
+POST   /register                                Accounts.register
+GET    /login                                   Accounts.login
+POST   /authenticate                            Accounts.authenticate
+GET    /logout                                  Accounts.logout
+GET     /dashboard/{id}/deleteassessment/{assessmentid}     Dashboard.deleteAssessment
+GET		/dashboard/deleteMember/{email}			Dashboard.deleteMember
+GET     /members/{id}                         	TrainerDashboard.selectMember
+GET		/trainer/{id}/deletemember 				TrainerDashboard.deleteMember
+POST    /trainerdashboard/{id}/addcomment/{assessmentid}                TrainerDashboard.addComment
+# Ignore favicon requests
+GET     /favicon.ico                            404
+
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+
+# Catch all
+*       /{controller}/{action}                  {controller}.{action}

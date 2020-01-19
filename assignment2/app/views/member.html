@@ -1,0 +1,76 @@
+#{extends 'main.html' /}
+#{set title:'Member' /}
+
+#{menu id:"trainerdashboard"/}
+
+<section class="ui raised segment">
+  <table class="ui basic stackable fixed table"style="border-style: none">
+  	<tbody>
+  		<tr class = "center bottom aligned"style="text-transform: uppercase">
+  			<td class = "center aligned" style="border-style: none"><i class="huge user icon"></i></td>
+  			<td class = "center aligned" style="border-style: none"><div id="isIdealBMI"><i class="huge weight icon"></i></div></td>
+  			<td style="border-style: none"><i class=" bottom aligned huge heartbeat icon"></i><b class = "" style="font-size: 60px ">${memberBMI}</b></td>
+  			<td class = "center aligned"  style="border-style: none"><i class=" huge user md icon"></i></td>
+  		</tr>
+  		<tr class = "top center aligned"style="text-transform: uppercase" style="border-style: none" >
+  			<td class="top center aligned" style="border-style: none"><b>${member.name}</b></td>
+  			<td  class="top center aligned" style="border-style: none"><b>IDEAL WEIGHT INDICATOR</b></td>
+  			<td class="top center aligned" style="border-style: none"><b>BMI</b></td>
+  			<td class="top center aligned" style="border-style: none"><b>${BMICategory}</b></td>
+  		</tr>
+ 	</tbody>
+  </table>
+</section>
+<section class="ui raised segment">
+  #{list items:assessmentlist, as:'assessment'}
+  <table class = "ui celled fixed sortable table">
+  	<thead class = "">
+  		<tr class ="">
+  			<th class = "">Date</th>
+  			<th class = "">Weight</th>
+  			<th class = "">Chest</th>
+  			<th class = "">Thigh</th>
+  			<th class = "">Upper Arm</th>
+  			<th class = "">Waist</th>
+  			<th class = "">Hips</th>
+  			<th class = "">Trend</th>
+  			<th class = "">Comment</th>	
+  		</tr>
+  	</thead>
+  	<tbody>	
+  		<tr>
+  			<td>${assessment.timeStamp}</td>
+  			<td>${assessment.weight}</td>
+  			<td>${assessment.chest}</td>
+  			<td>${assessment.thigh}</td>
+  			<td>${assessment.upperArm}</td>
+  			<td>${assessment.waist}</td>
+  			<td>${assessment.hips}</td>
+  			<td><label class = "${assessment.trend}"></label> </td>
+  			<td>${assessment.comment}</td>
+  		</tr>
+  	</tbody>
+  </table>
+  <form class="ui stacked segment form" action="/trainerdashboard/${member.id}/addcomment/${assessment.id}" method="POST">
+	<div class="field">
+		<label>Comments</label>
+		<input placeholder="Add comment" type="text" name="comment">
+	</div>
+	<button class="ui blue submit button">Update</button>
+  </form>
+  #{/list}
+</section>
+<section>
+<button class="ui button""><a id="dashboard" class="item" href="/trainerdashboard">Back</a></button>
+</section>
+
+
+<script>
+	var content = ${isIdealBMI};
+	if(content == true){
+		document.getElementById("isIdealBMI").style.color = '#4fb443';
+	}
+	if(content == false){
+		document.getElementById("isIdealBMI").style.color = '#de061a';
+	}
+</script>

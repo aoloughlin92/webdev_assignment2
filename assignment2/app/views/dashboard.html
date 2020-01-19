@@ -1,0 +1,101 @@
+#{extends 'main.html' /}
+#{set title:'Dashboard' /}
+
+#{menu id:"dashboard"/}
+<section class="ui raised segment">
+  <table class="ui basic stackable fixed table"style="border-style: none">
+    <tbody>
+      <tr class = "center bottom aligned"style="text-transform: uppercase">
+        <td class = "center aligned" style="border-style: none"><i class="huge user icon"></i></td>
+        <td class = "center aligned" style="border-style: none"><div id="isIdealBMI"><i class="huge weight icon"></i></div></td>
+        <td style="border-style: none"><i class=" bottom aligned huge heartbeat icon"></i><b class = "" style="font-size: 60px ">${memberBMI}</b></td>
+        <td class = "center aligned"  style="border-style: none"><i class=" huge user md icon"></i></td>
+      </tr>
+      <tr class = "top center aligned"style="text-transform: uppercase" style="border-style: none" >
+        <td class="top center aligned" style="border-style: none"><b>${member.name}</b></td>
+        <td  class="top center aligned" style="border-style: none"><b>IDEAL WEIGHT INDICATOR</b></td>
+        <td class="top center aligned" style="border-style: none"><b>BMI</b></td>
+        <td class="top center aligned" style="border-style: none"><b>${BMICategory}</b></td>
+      </tr>
+  </tbody>
+  </table>
+</section>
+
+
+<form class="ui stacked segment form" action="/dashboard/addassessment" method="POST">
+	<div class = "three fields">
+	  <div class="field">
+	    <label>Weight</label>
+	    <input placeholder="00.00kg" type="text" name="weight">
+	  </div>
+	  <div class="field">
+	    <label>Chest</label>
+	    <input placeholder="00.00cm" type="text" name="chest">
+	  </div>
+	  <div class="field">
+	    <label>Thigh</label>
+	    <input placeholder="00.00cm" type="text" name="thigh">
+	  </div>
+	</div>
+	<div class = "three fields">
+	  <div class="field">
+	    <label>Upper Arm</label>
+	    <input placeholder="00.00cm" type="text" name="upperArm">
+	  </div>
+	  <div class="field">
+	    <label>Waist</label>
+	    <input placeholder="00.00cm" type="text" name="waist">
+	  </div>
+	  <div class="field">
+	    <label>Hips</label>
+	    <input placeholder="00.00cm" type="text" name="hips">
+	  </div>
+	</div>
+  <button class="ui blue submit button">Add Assessment</button>
+</form>
+
+<section class="ui raised segment">
+  <table class = "ui celled fixed sortable table">
+  	<thead class = "">
+  		<tr class ="">
+  			<th class = "">Date</th>
+  			<th class = "">Weight</th>
+  			<th class = "">Chest</th>
+  			<th class = "">Thigh</th>
+  			<th class = "">Upper Arm</th>
+  			<th class = "">Waist</th>
+  			<th class = "">Hips</th>
+  			<th class = "">Trend</th>
+  			<th class = "">Comment</th>
+  			<th class = ""></th>
+  		</tr>
+  	</thead>
+  	<tbody>
+  		#{list items:assessmentlist, as:'assessment'}
+  		<tr>
+  			<td>${assessment.timeStamp}</td>
+  			<td>${assessment.weight}</td>
+  			<td>${assessment.chest}</td>
+  			<td>${assessment.thigh}</td>
+  			<td>${assessment.upperArm}</td>
+  			<td>${assessment.waist}</td>
+  			<td>${assessment.hips}</td>
+  			<td><label class = "${assessment.trend}"></label> </td>
+  			<td>${assessment.comment}</td>
+  			<td> <a href="/dashboard/${member.id}/deleteassessment/${assessment.id} " class="ui icon button"> <i class="trash alternate outline icon"></i> </a> </td>
+  		</tr>
+
+  		#{/list}
+  	</tbody>
+  </table>
+</section>
+
+<script>
+	var content = ${isIdealBMI};
+	if(content == true){
+		document.getElementById("isIdealBMI").style.color = '#4fb443';
+	}
+	if(content == false){
+		document.getElementById("isIdealBMI").style.color = '#de061a';
+	}
+</script>
